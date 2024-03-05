@@ -14,7 +14,6 @@
   <body>
     <h1>Bat Ball Stump Game</h1>
 
-    
     <button
       onclick="
   
@@ -69,95 +68,74 @@
     </button>
 
     <script>
-
       let score = {
-        win : 0,
-        lost : 0,
-        Tie : 0,
+        win: 0,
+        lost: 0,
+        Tie: 0,
 
-        displayScore: function(){
+        displayScore: function () {
           return ` Total wins ${score.win}, Total lose ${score.lost}, Total Tie ${score.Tie}`;
-        }
+        },
       };
 
       function generatedComputerChoice() {
-
-        let randomNumber = Math.random() *3;
+        let randomNumber = Math.random() * 3;
 
         if (randomNumber > 0 && randomNumber <= 1) {
-          return 'Bat';
+          return "Bat";
         } else if (randomNumber > 1 && randomNumber <= 2) {
-          return 'Ball';
-        } else{
-          return 'Stump';
+          return "Ball";
+        } else {
+          return "Stump";
         }
       }
 
       function getResult(userMove, computerMove) {
-
         if (userMove === "Bat") {
           if (computerMove === "Ball") {
-            
             score.win = score.win + 1;
             return "You Won Baby";
-            
-          }else if (computerMove === "Bat") {
-
+          } else if (computerMove === "Bat") {
             score.Tie++;
             return "Match Draw";
           } else if (computerMove === "Stump") {
-
             score.lost++;
             return "You Loose looser";
           }
-
-          } else if (userMove === 'Ball')
-           if (computerMove === "Ball") {
-            
+        } else if (userMove === "Ball") {
+          if (computerMove === "Ball") {
             score.Tie++;
             return "Match Draw";
-
-          } else if (computerMove === 'Bat') {
-
+          } else if (computerMove === "Bat") {
             score.lost++;
-            return 'You Loose Looser';
-
+            return "You Loose Looser";
           } else if (computerMove === "Stump") {
+            score.win++;
+            return "You Win Baby";
+          }
+        } else {
+          if (computerMove === "Ball") {
+            score.lost++;
+            return "You Loose Looser";
+          } else if (computerMove === "Bat") {
+            score.win++;
+            return "You Win Baby";
+          } else if (computerMove === "Stump") {
+            score.Tie++;
+            return "Match Draw";
+          }
+        }
+      }
 
-            score.win ++;
-            return 'You Win Baby';
-
-          } else if (userMove === 'Stump')
-            if (computerMove === 'Ball') {
-
-              score.lost++;
-              return 'You Loose Looser';
-
-            } else if (computerMove === 'Bat') {
-
-              score.win ++;
-              return 'You Win Baby';
-
-            } else if (computerMove === 'Stump') {
-
-              score.Tie++;
-              return 'Match Draw';
-            }
-            
-             }
-
-             function showResult(userMove, computerMove, result){
-
-              
-              alert(`You Choose ${userMove}, computer Choose ${computerMove}  
+      function showResult(userMove, computerMove, result) {
+        alert(`You Choose ${userMove}, computer Choose ${computerMove}  
               
               Match Result ${result} 
               
               
               
               ${score.displayScore()}`);
-
-             }
+      }
     </script>
   </body>
 </html>
