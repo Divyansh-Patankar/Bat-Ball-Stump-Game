@@ -65,45 +65,60 @@
   "
     >
       Stump
+    </button><hr>
+
+    <button
+      onclick="localStorage.clear()
+      
+        restScore()"
+    >
+      Start New Game
     </button>
 
     <script>
-      let scoreParse = localStorage.getItem('score');
-      let score = JSON.parse(scoreParse) ||  {
-        win: 0,
-        lost: 0,
-        Tie: 0,
 
-          };
+      let scoreParse = localStorage.getItem('score');
+      let score;
+
+      restScore(scoreParse);
+
+      function restScore(scoreParse) {
+        //ternary operator is use
+        score = scoreParse ? JSON.parse(scoreParse) : {
+          win: 0,
+          lost: 0,
+          Tie: 0,
+        };
+
+        score.displayScore = function () {
+          localStorage.setItem('score', JSON.stringify(score));
+          return ` Total wins ${score.win}, Total lose ${score.lost}, Total Tie ${score.Tie}`;
+        };
+      }
 
 
       // if(scoreParse !== undefined)  {
       //   score  = JSON.parse(scoreParse)
       // }
       //   else {
-        //   score = {
-        // win: 0,
-        // lost: 0,
-        // Tie: 0,
+      //   score = {
+      // win: 0,
+      // lost: 0,
+      // Tie: 0,
 
-        //   }
+      //   }
       // };
-      score.displayScore = function () {
+      function generatedComputerChoice() {
+        let randomNumber = Math.random() * 3;
 
-        localStorage.setItem('score',JSON.stringify(score))
-        return ` Total wins ${score.win}, Total lose ${score.lost}, Total Tie ${score.Tie}`;
-      };
-        function generatedComputerChoice() {
-          let randomNumber = Math.random() * 3;
-
-          if (randomNumber > 0 && randomNumber <= 1) {
-            return "Bat";
-          } else if (randomNumber > 1 && randomNumber <= 2) {
-            return "Ball";
-          } else {
-            return "Stump";
-          }
-        };
+        if (randomNumber > 0 && randomNumber <= 1) {
+          return "Bat";
+        } else if (randomNumber > 1 && randomNumber <= 2) {
+          return "Ball";
+        } else {
+          return "Stump";
+        }
+      }
 
       function getResult(userMove, computerMove) {
         if (userMove === "Bat") {
