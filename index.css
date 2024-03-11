@@ -1,14 +1,18 @@
 
 body {
   text-align: center;
-}
-.main-container{
-
-  background-color: chartreuse;
   margin: 0; padding: 0;
+  background-color: chartreuse;
 }
+
 .container{
-  height: 50px;
-  display: contents;
+  height: 130px;
+  width: 100px;
+  border: none;
+  background-color: chartreuse;
+  cursor: pointer;
   
+}
+.choice-image{
+  height: 90px;
 }
