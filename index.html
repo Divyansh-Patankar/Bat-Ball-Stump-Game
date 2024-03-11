@@ -107,6 +107,7 @@
           
           return ` Total wins ${score.win}, Total lose ${score.lost}, Total Tie ${score.Tie}`;
         };
+        showResult();
       }
 
 
@@ -181,20 +182,11 @@
         document.querySelector('#computer-move').innerText = 
         computerMove ?`computer Choose ${computerMove}` : '';
 
-        document.querySelector('#result').innerText = 
-        result ?  `Match result ${result}` : '';
+        document.querySelector('#result').innerText =  result || '';
 
         document.querySelector('#score').innerText = score.displayScore();
       
 
-
-        alert(`You Choose ${userMove}, computer Choose ${computerMove}
-
-              Match Result ${result}
-
-
-
-              ${score.displayScore()}`);
       }
     </script>
   </body>
