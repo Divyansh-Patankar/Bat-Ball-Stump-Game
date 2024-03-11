@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Cricket</title>
 
-    <style>
-      body {
-        text-align: center;
-      }
+    <link rel="stylesheet" href="index.css">
+
+  
     </style>
   </head>
   <body>
+    <div class="main-container">
+
+    
+
     <h1>Bat Ball Stump Game</h1>
 
 
-    <button
+    <button class="container"
       onclick="
   
      let computer_Chooice =  generatedComputerChoice();
@@ -28,12 +31,12 @@
   
   
   
-  "
+  " 
     >
-      Bat
+      <img src="asset/bat.png" alt="Bat">
     </button>
 
-    <button
+    <button class="container"
       onclick="
   
      computer_Chooice = generatedComputerChoice();
@@ -47,10 +50,10 @@
   
   "
     >
-      Ball
+      <img src="asset/ball.png" alt="Ball">
     </button>
 
-    <button
+    <button class="container"
       onclick="
   
      computer_Chooice = generatedComputerChoice();
@@ -65,23 +68,24 @@
   
   "
     >
-      Stump
+      <img src="asset/stump.png" alt="Stump">
     </button><hr>
 
-    <h3 id="user-moive"></h3>
-    <h3 id="computer-moive"></h3>
+    <h3 id="user-move"></h3>
+    <h3 id="computer-move"></h3>
     <h3 id="result"></h3>
     <h3 id="score"></h3>
 
 
-    <button
+    <button class="container"
       onclick="localStorage.clear()
       
         restScore()"
     >
-      Start New Game
+      <img src="asset/reset.png" alt="Start New Game">
     </button>
 
+     </div>
 
     <script>
 
@@ -99,7 +103,8 @@
         };
 
         score.displayScore = function () {
-          localStorage.setItem('score', JSON.stringify(score));
+
+          
           return ` Total wins ${score.win}, Total lose ${score.lost}, Total Tie ${score.Tie}`;
         };
       }
@@ -170,10 +175,16 @@
 
         localStorage.setItem('score', JSON.stringify(score));
 
-        document.querySelector('#user-move').innerText = `You Choose ${userMove}`;
-        document.querySelector('computer-move').innerText = `You Choose ${userMove}`;
-        document.querySelector('#result').innerText = `You Choose ${userMove}`;
-        document.querySelector('#score').innerText = `You Choose ${userMove}`;
+        document.querySelector('#user-move').innerText =
+        userMove ? `You Choose ${userMove}` : '';
+
+        document.querySelector('#computer-move').innerText = 
+        computerMove ?`computer Choose ${computerMove}` : '';
+
+        document.querySelector('#result').innerText = 
+        result ?  `Match result ${result}` : '';
+
+        document.querySelector('#score').innerText = score.displayScore();
       
 
 
